@@ -1,11 +1,19 @@
 import java.io.FileWriter;
 import java.util.List;
 
+/**
+ * Singleton Class for writing CSV File
+ */
 public class CSVUtil {
 
     private FileWriter      writer;
     private static CSVUtil  instance;
 
+    /**
+     * Private constructor
+     *
+     * @throws Exception
+     */
     private CSVUtil() throws Exception {
 
         String csvFile = "tmp/data.csv";
@@ -14,11 +22,23 @@ public class CSVUtil {
         System.out.println("\n-- data.csv created");
     }
 
+    /**
+     * Access point to unique instance
+     *
+     * @return CSVUtil Object
+     * @throws Exception
+     */
     public static CSVUtil getInstance() throws Exception {
 
         return instance = new CSVUtil();
     }
 
+    /**
+     * Method to write into csv file
+     *
+     * @param locations List of location
+     * @throws Exception
+     */
     public void write(List<Locations> locations) throws Exception {
 
         String fileHeader = "advertiser_id,latitude,longitude,horizontal_accuracy,timestamp";
